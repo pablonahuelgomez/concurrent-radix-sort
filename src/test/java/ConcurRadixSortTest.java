@@ -3,11 +3,11 @@ import java.util.*;
 public class ConcurRadixSortTest {
 
     public static void main(String[] args) {
-        ArrayList<Integer> randomList = randomList();
+        ArrayList<Integer> randomList = fillList(new ArrayList<>());
 
-        int bufferSize = 250;
-        int threads = 4;
-        int batchSize = 250;
+        int bufferSize = 10;
+        int threads = 1;
+        int batchSize = 10;
 
         ConcurRadixSort sorter = new ConcurRadixSort(bufferSize, threads, batchSize);
 
@@ -17,11 +17,10 @@ public class ConcurRadixSortTest {
 
         long duration = (System.nanoTime() - startTime) / 1000000;
 
-        System.out.println(String.format("%s threads: %s ms = %s", threads, duration, result));
+        System.out.println(String.format("%s threads: %s ms = %s> ", threads, duration, result));
     }
 
-    private static ArrayList<Integer> randomList() {
-        ArrayList<Integer> list = new ArrayList<>();
+    private static ArrayList<Integer> fillList(ArrayList<Integer> list) {
         Random rand = new Random();
 
         for (int i = 0; i < 10000; i++) {
