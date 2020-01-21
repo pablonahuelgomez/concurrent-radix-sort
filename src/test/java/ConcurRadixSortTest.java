@@ -6,7 +6,7 @@ public class ConcurRadixSortTest {
         ArrayList<Integer> randomList = fillList(new ArrayList<>());
 
         int bufferSize = 10;
-        int threads = 1;
+        int threads = 2;
         int batchSize = 10;
 
         ConcurRadixSort sorter = new ConcurRadixSort(bufferSize, threads, batchSize);

@@ -15,16 +15,16 @@ public class SplitTask implements Runnable {
 
     @Override
     public synchronized void run() {
-        ArrayList[] tuple = split(batch, bit);
+        ArrayList[] tuple = split();
         splitBuffer.push(priority, tuple);
     }
 
-    private ArrayList[] split(List<Integer> list, int bit) {
+    private ArrayList[] split() {
         ArrayList<Integer> zeros = new ArrayList<>();
         ArrayList<Integer> ones = new ArrayList<>();
         int mask = 1 << bit;
 
-        for (Integer element : list) {
+        for (Integer element : batch) {
             if ((element & mask) != 0) {
                 ones.add(element);
             } else {
